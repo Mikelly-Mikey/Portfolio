@@ -14,6 +14,7 @@ A personal portfolio website showcasing certifications and professional achievem
 Portfolio/
 ├── Mica.html          # Main HTML file
 ├── Mica.css           # Styling for the portfolio
+├── Mica.js            # Adds interactivity, dynamic content, navigation and routing
 └── certificates/      # Directory containing certificate PDFs and badges
 
 ```
