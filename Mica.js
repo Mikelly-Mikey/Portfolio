@@ -1,7 +1,7 @@
 // Typing effect for skills in Home page only
 const skills = [
-  "Front-end Developer",
-  "Designer",
+  "Web-Developer",
+  "Logo & Poster Designer",
   "System Administrator",
   "Cybersecurity Enthusiast",
 ];
@@ -49,8 +49,19 @@ const sections = [
   document.querySelector(".about-section"),
   document.querySelector(".projects-section"),
   document.querySelector(".resume-section"),
+  document.querySelector(".cert-section"),
   document.querySelector(".contact-section"),
 ];
+
+function updateActiveLink(sectionId) {
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+  });
+  const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+  if (activeLink) {
+    activeLink.classList.add("active");
+  }
+}
 
 function showSection(sectionId) {
   sections.forEach((section) => {
@@ -60,6 +71,7 @@ function showSection(sectionId) {
       section.style.display = "none";
     }
   });
+  updateActiveLink(sectionId);
   // Restart typing effect if on home
   if (sectionId === "home" && typedSkill) {
     typedSkill.textContent = "";
@@ -70,7 +82,7 @@ function showSection(sectionId) {
   }
 }
 
-// Initial state: show home only
+// Initial state: show home only and set active link
 showSection("home");
 
 navLinks.forEach((link) => {

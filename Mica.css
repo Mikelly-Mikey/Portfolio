@@ -52,12 +52,17 @@ body {
 }
 .navbar a:hover {
   color: #e63946;
+}
+.navbar a.active {
+  color: #e63946;
   text-decoration: underline;
+  font-weight: 600;
 }
 .home,
 .about-section,
 .projects-section,
 .resume-section,
+.cert-section,
 .contact-section {
   position: relative;
   width: 100%;
@@ -81,7 +86,7 @@ body {
   margin: 0 auto;
 }
 .home-content {
-  max-width: 500px;
+  max-width: 700px;
   background: rgba(0, 0, 0, 0.5);
   padding: 30px 30px 20px 30px;
   border-radius: 16px;
@@ -201,6 +206,7 @@ body {
 .about-container p,
 .projects-container p,
 .resume-container p,
+.cert-container p,
 .contact-container p {
   font-size: 1.3rem;
 }
@@ -217,19 +223,25 @@ body {
 .projects-list {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 12px;
   margin-top: 32px;
 }
 .project-item {
   background: rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 18px 24px;
+  padding: 12px 16px;
   color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 .project-item h3 {
   color: #007bff;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
 }
 .project-item ul {
   list-style: disc inside;
@@ -237,8 +249,9 @@ body {
   padding-left: 0;
 }
 .project-item li {
-  margin-bottom: 6px;
-  font-size: 1rem;
+  margin-bottom: 3px;
+  font-size: 0.9rem;
+  line-height: 1.3;
 }
 .resume-container {
   max-width: 600px;
@@ -250,6 +263,17 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+.contact-container {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px 30px 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+  text-align: center;
+}
+.cert-download,
 .download-cv-btn {
   display: inline-block;
   margin-top: 18px;
@@ -263,6 +287,7 @@ body {
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+.cert-download:hover,
 .download-cv-btn:hover {
   background: #fff;
   color: #007bff;
@@ -335,13 +360,6 @@ body {
 .social-link.github:hover {
   color: #333;
 }
-.projects-container h2,
-.resume-container h2 {
-  font-size: 2.2rem;
-  color: #007bff;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
 .typing-effect {
   font-size: 1.7rem;
   color: #222;
@@ -378,6 +396,73 @@ footer {
   font-size: 1rem;
   margin-top: 40px;
 }
+
+.cert-container {
+  max-width: 900px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px 30px 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+  text-align: center;
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.cert-item {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin: 0;
+}
+
+.cert-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cert-item a {
+  display: block;
+  overflow: hidden;
+}
+
+.cert-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.cert-item:hover img {
+  transform: scale(1.05);
+}
+
+.cert-item figcaption {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.cert-item h3 {
+  font-size: 1.2rem;
+  margin: 0 0 6px 0;
+  color: #007bff;
+  font-weight: 600;
+}
+
+.cert-meta {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin: 0 0 12px 0;
+}
+
 @media (max-width: 1200px) {
   .home-content-wrapper {
     flex-direction: column;
@@ -407,6 +492,7 @@ footer {
   .about-section,
   .projects-section,
   .resume-section,
+  .cert-section,
   .contact-section {
     padding-left: 5%;
     padding-right: 5%;
@@ -415,6 +501,7 @@ footer {
   .about-container,
   .projects-container,
   .resume-container,
+  .cert-container,
   .contact-container {
     max-width: 90vw;
   }
@@ -450,12 +537,10 @@ footer {
   .about-section,
   .projects-section,
   .resume-section,
+  .cert-section,
   .contact-section {
     padding: 50px 5% 40px 5%;
   }
-  .about-container h2,
-  .projects-container h2,
-  .resume-container h2,
   .contact-container h2 {
     font-size: 1.5rem;
   }
