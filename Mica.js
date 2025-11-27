@@ -42,6 +42,43 @@ function typeSkill() {
 }
 document.addEventListener("DOMContentLoaded", typeSkill);
 
+// Hamburger menu functionality
+const hamburger = document.querySelector('.hamburger');
+const navbar = document.querySelector('.navbar');
+
+if (hamburger && navbar) {
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navbar.classList.toggle('active');
+  });
+
+  // Close menu when clicking on a navigation link
+  const navLinks = document.querySelectorAll('.navbar a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      navbar.classList.remove('active');
+      // Add transparency effect
+      navbar.classList.add('transparent');
+      // Remove transparency after animation completes
+      setTimeout(() => {
+        navbar.classList.remove('transparent');
+      }, 300);
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const isClickInsideNavbar = navbar.contains(event.target);
+    const isClickOnHamburger = hamburger.contains(event.target);
+    
+    if (!isClickInsideNavbar && !isClickOnHamburger && navbar.classList.contains('active')) {
+      hamburger.classList.remove('active');
+      navbar.classList.remove('active');
+    }
+  });
+}
+
 // Section navigation: show only one section at a time
 const navLinks = document.querySelectorAll(".navbar a, .logo");
 const sections = [
