@@ -1,9 +1,9 @@
 // Typing effect for skills in Home page only
 const skills = [
-  "Web-Developer",
-  "Logo & Poster Designer",
-  "System Administrator",
-  "Cybersecurity Enthusiast",
+  " Web- & System-Developer",
+  " Logo & Poster Designer",
+  " System Administrator",
+  "n Ethusiastic Cybersec student",
 ];
 let skillIndex = 0;
 let charIndex = 0;
@@ -14,7 +14,7 @@ const cursor = document.querySelector(".cursor");
 // Slower typing and erasing speeds
 const TYPE_SPEED = 220;
 const ERASE_SPEED = 120;
-const PAUSE_AFTER_TYPE = 1800;
+const PAUSE_AFTER_TYPE = 3000;
 const PAUSE_AFTER_ERASE = 800;
 
 function typeSkill() {
@@ -43,38 +43,42 @@ function typeSkill() {
 document.addEventListener("DOMContentLoaded", typeSkill);
 
 // Hamburger menu functionality
-const hamburger = document.querySelector('.hamburger');
-const navbar = document.querySelector('.navbar');
+const hamburger = document.querySelector(".hamburger");
+const navbar = document.querySelector(".navbar");
 
 if (hamburger && navbar) {
-  hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('active');
-    navbar.classList.toggle('active');
+  hamburger.addEventListener("click", function () {
+    hamburger.classList.toggle("active");
+    navbar.classList.toggle("active");
   });
 
   // Close menu when clicking on a navigation link
-  const navLinks = document.querySelectorAll('.navbar a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      hamburger.classList.remove('active');
-      navbar.classList.remove('active');
+  const navLinks = document.querySelectorAll(".navbar a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      hamburger.classList.remove("active");
+      navbar.classList.remove("active");
       // Add transparency effect
-      navbar.classList.add('transparent');
+      navbar.classList.add("transparent");
       // Remove transparency after animation completes
       setTimeout(() => {
-        navbar.classList.remove('transparent');
+        navbar.classList.remove("transparent");
       }, 300);
     });
   });
 
   // Close menu when clicking outside
-  document.addEventListener('click', function(event) {
+  document.addEventListener("click", function (event) {
     const isClickInsideNavbar = navbar.contains(event.target);
     const isClickOnHamburger = hamburger.contains(event.target);
-    
-    if (!isClickInsideNavbar && !isClickOnHamburger && navbar.classList.contains('active')) {
-      hamburger.classList.remove('active');
-      navbar.classList.remove('active');
+
+    if (
+      !isClickInsideNavbar &&
+      !isClickOnHamburger &&
+      navbar.classList.contains("active")
+    ) {
+      hamburger.classList.remove("active");
+      navbar.classList.remove("active");
     }
   });
 }
